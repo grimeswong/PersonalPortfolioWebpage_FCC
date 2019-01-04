@@ -17,5 +17,8 @@
   ],
   "author": "Grimes Wong",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/grimeswong/gulp_task_gunner#readme"
+  "homepage": "https://bitbucket.org/grimeswong/gulp_task_gunner#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0"
+  }
 }
