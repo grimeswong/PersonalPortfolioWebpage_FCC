@@ -1,0 +1,21 @@
+{
+  "name": "gulp_task_gunner",
+  "version": "1.0.0",
+  "description": "A Collections of tasks for Gulp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/grimeswong/gulp_task_gunner.git"
+  },
+  "keywords": [
+    "Gulp",
+    "Task",
+    "Runner"
+  ],
+  "author": "Grimes Wong",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/grimeswong/gulp_task_gunner#readme"
+}
