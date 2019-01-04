@@ -1,0 +1,7 @@
+#Ignore System File
+/node_modules
+npm-debug.log
+.DS_Store
+
+#Custom Ignore Files
+/public
