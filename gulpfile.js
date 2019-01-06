@@ -6,11 +6,13 @@
 
 const { src, dest, parallel, series} = require('gulp');
 const imagemin = require('gulp-imagemin');
-
+const cleancss = require('gulp-clean-css');
 
 /*** Source and destination folders ***/
 const srcImg = 'src/img/**/*';  // ** (wildcard) means include all file in current folders and its subfolders
-const destImg = 'public/img'
+const destImg = 'public/img';
+const srcCss = 'src/css/**/*.css';
+const destCss = 'public/css';
 
 
 function compressimg() {
@@ -19,7 +21,14 @@ function compressimg() {
     .pipe(dest(destImg))
 }
 
+function compresscss() {
+  return src(srcCss)
+    .pipe(cleancss({compatibility: 'ie8'}))   /* option for making compatibable with IE8 */
+    .pipe(dest(destCss))
+}
+
 exports.compressimg = compressimg;  // The name of the tasks runner and export it
+exports.compresscss = compresscss;
 
 /* series() - Combines task functions and/or composed operations into larger operations that will be executed one after another, in sequential order.
  * parallel() - Combines task functions and/or composed operations into larger operations that will be executed simultaneously.
