@@ -7,6 +7,7 @@
 const { src, dest, parallel, series} = require('gulp');
 const imagemin = require('gulp-imagemin');
 const cleancss = require('gulp-clean-css');
+const autoprefixer = require('gulp-autoprefixer');
 
 /*** Source and destination folders ***/
 const srcImg = 'src/img/**/*';  // ** (wildcard) means include all file in current folders and its subfolders
@@ -23,6 +24,10 @@ function compressimg() {
 
 function compresscss() {
   return src(srcCss)
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
     .pipe(cleancss({compatibility: 'ie8'}))   /* option for making compatibable with IE8 */
     .pipe(dest(destCss))
 }
