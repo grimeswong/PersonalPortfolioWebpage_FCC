@@ -4,11 +4,11 @@
  *
  **/
 
-const { src, dest, watch, parallel, series} = require('gulp');
-const imagemin = require('gulp-imagemin');
-const cleancss = require('gulp-clean-css');
-const autoprefixer = require('gulp-autoprefixer');
-const sass = require('gulp-sass');
+const { src, dest, watch, parallel, series} = require('gulp'); // plugin for task runner
+const imagemin = require('gulp-imagemin'); // plugin for minify images
+const cleancss = require('gulp-clean-css'); // plugin for minify css
+const autoprefixer = require('gulp-autoprefixer'); // plugin for prefix css
+const sass = require('gulp-sass'); // plugin for convert sass/scss to css
 
 /*** Source and destination folders ***/
 const srcImg = 'src/img/**/*';  // ** (wildcard) means include all file in current folders and its subfolders
