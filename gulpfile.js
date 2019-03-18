@@ -37,6 +37,12 @@ function compresscss() {
 function convertsasstocss() {
   return src(srcScss)
     .pipe(sass().on('error', sass.logError))
+    return src(srcCss)
+      .pipe(autoprefixer({
+        browsers: ['last 2 versions'],
+        cascade: false
+      }))
+      .pipe(cleancss({compatibility: 'ie8'}))   /* option for making compatibable with IE8 */
     .pipe(dest(destCss));
 }
 
