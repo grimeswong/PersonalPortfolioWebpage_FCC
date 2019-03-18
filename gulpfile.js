@@ -5,10 +5,11 @@
  **/
 
 const { src, dest, watch, parallel, series} = require('gulp'); // plugin for task runner
-const imagemin = require('gulp-imagemin'); // plugin for minify images
-const cleancss = require('gulp-clean-css'); // plugin for minify css
-const autoprefixer = require('gulp-autoprefixer'); // plugin for prefix css
-const sass = require('gulp-sass'); // plugin for convert sass/scss to css
+const imagemin = require('gulp-imagemin'); // plugin to minify images
+const cleancss = require('gulp-clean-css'); // plugin to minify css
+const htmlmin = require('gulp-htmlmin'); // plugin to minify html
+const autoprefixer = require('gulp-autoprefixer'); // plugin for prefixing css
+const sass = require('gulp-sass'); // plugin for converting sass/scss to css
 
 /*** Source and destination folders ***/
 const srcImg = 'src/img/**/*';  // ** (wildcard) means include all file in current folders and its subfolders
@@ -16,6 +17,8 @@ const destImg = 'public/img';
 const srcCss = 'src/css/**/*.css';
 const srcScss = "src/css/**/*.scss";
 const destCss = 'public/css';
+const srcHtml = 'src/index.html';
+const destHtml = 'public/';
 
 
 function compressimg() {
@@ -46,6 +49,15 @@ function convertsasstocss() {
     .pipe(dest(destCss));
 }
 
+function compresshtml() {
+  return src(srcHtml)
+    .pipe(htmlmin({
+      collapseWhitespace: true
+    }))
+    .pipe(dest(destHtml));
+    console.log("compress HTML done!!!")
+}
+
 function watchsass() {
   watch([srcScss], convertsasstocss)
   .on('change', (path, stats) => {
@@ -56,6 +68,7 @@ function watchsass() {
 exports.compressimg = compressimg;  // The name of the tasks runner and export it
 exports.compresscss = compresscss;
 exports.convertsasstocss = convertsasstocss;
+exports.compresshtml = compresshtml;
 exports.watchsass = watchsass;
 
 /* series() - Combines task functions and/or composed operations into larger operations that will be executed one after another, in sequential order.
@@ -64,4 +77,4 @@ exports.watchsass = watchsass;
  **/
 
 
-exports.default = series(watchsass, compressimg);  // Defined a default tasks for executing one after another by using the function "series"
+exports.default = parallel(watchsass, compressimg, compresshtml);  // Defined a default tasks for executing one after another by using the function "series"
