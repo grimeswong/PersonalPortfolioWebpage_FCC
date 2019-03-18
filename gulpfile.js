@@ -8,6 +8,7 @@ const { src, dest, watch, parallel, series} = require('gulp'); // plugin for tas
 const imagemin = require('gulp-imagemin'); // plugin to minify images
 const cleancss = require('gulp-clean-css'); // plugin to minify css
 const htmlmin = require('gulp-htmlmin'); // plugin to minify html
+const jsmin = require('gulp-uglify'); // plugin to minify javascript
 const autoprefixer = require('gulp-autoprefixer'); // plugin for prefixing css
 const sass = require('gulp-sass'); // plugin for converting sass/scss to css
 
@@ -19,6 +20,8 @@ const srcScss = "src/css/**/*.scss";
 const destCss = 'public/css';
 const srcHtml = 'src/index.html';
 const destHtml = 'public/';
+const srcJs = 'src/js/**/*';
+const destJs = 'public/js';
 
 
 function compressimg() {
@@ -58,6 +61,12 @@ function compresshtml() {
     console.log("compress HTML done!!!")
 }
 
+function compressjs() {
+  return src(srcJs)
+    .pipe(jsmin())
+    .pipe(dest(destJs));
+}
+
 function watchsass() {
   watch([srcScss], convertsasstocss)
   .on('change', (path, stats) => {
@@ -69,6 +78,7 @@ exports.compressimg = compressimg;  // The name of the tasks runner and export i
 exports.compresscss = compresscss;
 exports.convertsasstocss = convertsasstocss;
 exports.compresshtml = compresshtml;
+exports.compressjs = compressjs;
 exports.watchsass = watchsass;
 
 /* series() - Combines task functions and/or composed operations into larger operations that will be executed one after another, in sequential order.
@@ -77,4 +87,4 @@ exports.watchsass = watchsass;
  **/
 
 
-exports.default = parallel(watchsass, compressimg, compresshtml);  // Defined a default tasks for executing one after another by using the function "series"
+exports.default = parallel(watchsass, compressimg, compresshtml, compressjs);  // Defined a default tasks for executing one after another by using the function "series"
