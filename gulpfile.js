@@ -86,5 +86,5 @@ exports.watchsass = watchsass;
  *
  **/
 
-
+exports.build = series(parallel(compressimg, compressjs, convertsasstocss), compresshtml);  // Define a build task for implementing the minify jobs
 exports.default = parallel(watchsass, compressimg, compresshtml, compressjs);  // Defined a default tasks for executing one after another by using the function "series"
