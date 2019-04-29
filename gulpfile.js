@@ -51,12 +51,11 @@ function compresscss() {
 function convertsasstocss() {
   return src(srcScss)
     .pipe(sass().on('error', sass.logError))
-    return src(srcCss)
-      .pipe(autoprefixer({
-        browsers: ['last 2 versions'],
-        cascade: false
-      }))
-      .pipe(cleancss({compatibility: 'ie8'}))   /* option for making compatibable with IE8 */
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
+    .pipe(cleancss({compatibility: 'ie8'}))   /* option for making compatibable with IE8 */
     .pipe(dest(distCss))
     .pipe(browsersync.stream());  // emit a signal for reload the browser
 }
@@ -77,6 +76,17 @@ function compressjs() {
     .pipe(jsmin())
     .pipe(dest(distJs))
     .pipe(browsersync.stream());
+}
+
+/**
+ *  Purpose: This function for reloading the webpage without manualy refresh the browser
+ **/
+function livereload() {
+  browsersync.init({
+    server: {
+      baseDir: "./dist"
+    }
+  });
 }
 
 function watchtask() {
@@ -100,6 +110,7 @@ exports.convertsasstocss = convertsasstocss;
 exports.compresshtml = compresshtml;
 exports.compressjs = compressjs;
 exports.watchtask = watchtask;
+exports.livereload = livereload;
 
 /* series() - Combines task functions and/or composed operations into larger operations that will be executed one after another, in sequential order.
  * parallel() - Combines task functions and/or composed operations into larger operations that will be executed simultaneously.
@@ -107,4 +118,4 @@ exports.watchtask = watchtask;
  **/
 
 exports.build = series(parallel(compressimg, compressjs, convertsasstocss), compresshtml);  // Define a build task for implementing the minify jobs
-exports.default = series(parallel(compressimg, compressjs, convertsasstocss), compresshtml, watchtask);  // Defined a default tasks for executing one after another by using the function "series"
+exports.default = series(parallel(compressimg, compressjs, convertsasstocss), compresshtml, parallel(watchtask, livereload));  // Defined a default tasks for executing one after another by using the function "series"

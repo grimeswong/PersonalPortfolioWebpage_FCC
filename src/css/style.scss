@@ -1,9 +1,11 @@
+@import "style.css";
+
 a {
   color: red;
   &:hover {
     color: blue;
   }
   &:active {
-    color: yellow;
+    color: green;
   }
 }
