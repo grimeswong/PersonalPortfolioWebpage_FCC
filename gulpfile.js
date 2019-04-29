@@ -28,13 +28,14 @@ const distJs = 'dist/js';
 const distCss = 'dist/css';
 const distImg = 'dist/img';
 
-
+/*** Minify image ***/
 function compressimg() {
   return src(srcImg)
     .pipe(imagemin())
     .pipe(dest(distImg))
 }
 
+/*** Minify CSS ***/
 function compresscss() {
   return src(srcCss)
     .pipe(autoprefixer({
@@ -45,6 +46,7 @@ function compresscss() {
     .pipe(dest(distCss))
 }
 
+/*** Convert SASS and minify CSS ***/
 function convertsasstocss() {
   return src(srcScss)
     .pipe(sass().on('error', sass.logError))
@@ -57,6 +59,7 @@ function convertsasstocss() {
     .pipe(dest(distCss));
 }
 
+/*** Minify HTML ***/
 function compresshtml() {
   return src(srcHtml)
     .pipe(htmlmin({
@@ -66,6 +69,7 @@ function compresshtml() {
     console.log("compress HTML done!!!")
 }
 
+/*** Minify JavaScript ***/
 function compressjs() {
   return src(srcJs)
     .pipe(jsmin())
