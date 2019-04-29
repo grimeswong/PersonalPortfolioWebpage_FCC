@@ -1,8 +1,8 @@
-/*
- * This is an gulf configuration file that setup tasks for automatically run
- * By convention, a default task(s) should be set with a 'default' keyword
- *
- **/
+/**
+  * This is an gulf configuration file that setup tasks for automatically run
+  * By convention, a default task(s) should be set with a 'default' keyword
+  *
+  **/
 
 const { src, dest, watch, parallel, series} = require('gulp'); // plugin for task runner
 const imagemin = require('gulp-imagemin'); // plugin to minify images
@@ -12,22 +12,27 @@ const jsmin = require('gulp-uglify'); // plugin to minify javascript
 const autoprefixer = require('gulp-autoprefixer'); // plugin for prefixing css
 const sass = require('gulp-sass'); // plugin for converting sass/scss to css
 
-/*** Source and destination folders ***/
-const srcImg = 'src/img/**/*';  // ** (wildcard) means include all file in current folders and its subfolders
-const destImg = 'public/img';
+/**
+  * Source and destination folders
+  **/
+/*** Source ***/
+const srcHtml = 'src/index.html';
+const srcJs = 'src/js/**/*';
 const srcCss = 'src/css/**/*.css';
 const srcScss = "src/css/**/*.scss";
-const destCss = 'public/css';
-const srcHtml = 'src/index.html';
-const destHtml = 'public/';
-const srcJs = 'src/js/**/*';
-const destJs = 'public/js';
+const srcImg = 'src/img/**/*';  // **/* (wildcard) means include all file in current folders and its subfolders
+
+/*** Destination ***/
+const distHtml = 'dist/';
+const distJs = 'dist/js';
+const distCss = 'dist/css';
+const distImg = 'dist/img';
 
 
 function compressimg() {
   return src(srcImg)
     .pipe(imagemin())
-    .pipe(dest(destImg))
+    .pipe(dest(distImg))
 }
 
 function compresscss() {
@@ -37,7 +42,7 @@ function compresscss() {
       cascade: false
     }))
     .pipe(cleancss({compatibility: 'ie8'}))   /* option for making compatibable with IE8 */
-    .pipe(dest(destCss))
+    .pipe(dest(distCss))
 }
 
 function convertsasstocss() {
@@ -49,7 +54,7 @@ function convertsasstocss() {
         cascade: false
       }))
       .pipe(cleancss({compatibility: 'ie8'}))   /* option for making compatibable with IE8 */
-    .pipe(dest(destCss));
+    .pipe(dest(distCss));
 }
 
 function compresshtml() {
@@ -57,14 +62,14 @@ function compresshtml() {
     .pipe(htmlmin({
       collapseWhitespace: true
     }))
-    .pipe(dest(destHtml));
+    .pipe(dest(distHtml));
     console.log("compress HTML done!!!")
 }
 
 function compressjs() {
   return src(srcJs)
     .pipe(jsmin())
-    .pipe(dest(destJs));
+    .pipe(dest(distJs));
 }
 
 function watchsass() {
