@@ -11,6 +11,7 @@ const htmlmin = require('gulp-htmlmin'); // plugin to minify html
 const jsmin = require('gulp-uglify'); // plugin to minify javascript
 const autoprefixer = require('gulp-autoprefixer'); // plugin for prefixing css
 const sass = require('gulp-sass'); // plugin for converting sass/scss to css
+const browsersync = require('browser-sync').create(); // plugin for live css reload & browser syncing
 
 /**
   * Source and destination folders
@@ -56,7 +57,8 @@ function convertsasstocss() {
         cascade: false
       }))
       .pipe(cleancss({compatibility: 'ie8'}))   /* option for making compatibable with IE8 */
-    .pipe(dest(distCss));
+    .pipe(dest(distCss))
+    .pipe(browsersync.stream());  // emit a signal for reload the browser
 }
 
 /*** Minify HTML ***/
@@ -65,21 +67,30 @@ function compresshtml() {
     .pipe(htmlmin({
       collapseWhitespace: true
     }))
-    .pipe(dest(distHtml));
-    console.log("compress HTML done!!!")
+    .pipe(dest(distHtml))
+    .pipe(browsersync.stream());
 }
 
 /*** Minify JavaScript ***/
 function compressjs() {
   return src(srcJs)
     .pipe(jsmin())
-    .pipe(dest(distJs));
+    .pipe(dest(distJs))
+    .pipe(browsersync.stream());
 }
 
-function watchsass() {
+function watchtask() {
   watch([srcScss], convertsasstocss)
   .on('change', (path, stats) => {
-    console.log(`Sass files in ${path} are converting to css file ...`);
+    console.log(`Scss files in ${path} are converting to css file with compression ...`);
+  });
+  watch([srcHtml], compresshtml)
+  .on('change', (path, stats) => {
+    console.log(`HTML files in ${path} are minifying ...`);
+  });
+  watch([srcJs], compressjs)
+  .on('change', (path, stats) => {
+    console.log(`Javascript files in ${path} are minifying ...`);
   });
 }
 
@@ -88,7 +99,7 @@ exports.compresscss = compresscss;
 exports.convertsasstocss = convertsasstocss;
 exports.compresshtml = compresshtml;
 exports.compressjs = compressjs;
-exports.watchsass = watchsass;
+exports.watchtask = watchtask;
 
 /* series() - Combines task functions and/or composed operations into larger operations that will be executed one after another, in sequential order.
  * parallel() - Combines task functions and/or composed operations into larger operations that will be executed simultaneously.
@@ -96,4 +107,4 @@ exports.watchsass = watchsass;
  **/
 
 exports.build = series(parallel(compressimg, compressjs, convertsasstocss), compresshtml);  // Define a build task for implementing the minify jobs
-exports.default = parallel(watchsass, compressimg, compresshtml, compressjs);  // Defined a default tasks for executing one after another by using the function "series"
+exports.default = series(parallel(compressimg, compressjs, convertsasstocss), compresshtml, watchtask);  // Defined a default tasks for executing one after another by using the function "series"
