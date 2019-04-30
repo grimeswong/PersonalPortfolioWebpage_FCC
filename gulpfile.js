@@ -57,7 +57,10 @@ function convertsasstocss() {
   return src(srcScss)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
-    .pipe(rename({suffix: ".min"}))
+    .pipe(rename({
+      suffix: ".min",
+      basename: "styles"
+    }))
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
