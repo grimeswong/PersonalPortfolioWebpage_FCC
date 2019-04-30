@@ -1,5 +1,5 @@
 /**
-  * This is an gulf configuration file that setup tasks for automatically run
+  * This is an gulp configuration file that setup tasks for automatically run
   * By convention, a default task(s) should be set with a 'default' keyword
   *
   **/
