@@ -8,12 +8,13 @@ const { src, dest, watch, parallel, series} = require('gulp'); // plugin for tas
 const imagemin = require('gulp-imagemin'); // plugin to minify images
 const cleancss = require('gulp-clean-css'); // plugin to minify css
 const htmlmin = require('gulp-htmlmin'); // plugin to minify html
-const jsmin = require('gulp-uglify'); // plugin to minify javascript
+const uglify = require('gulp-uglify'); // plugin to minify javascript
 const autoprefixer = require('gulp-autoprefixer'); // plugin for prefixing css
 const sass = require('gulp-sass'); // plugin for converting sass/scss to css
 const browsersync = require('browser-sync').create(); // plugin for live css reload & browser syncing
 const rename = require('gulp-rename');  // plugin for rename the processed files
 const concat = require('gulp-concat'); // plugin for concate files
+const sourcemaps = require('gulp-sourcemaps'); // plugin for getting the original codes for debugging
 
 /**
   * Source and destination folders
@@ -41,17 +42,20 @@ function compressimg() {
 /*** Minify CSS ***/
 function compresscss() {
   return src(srcCss)
+  .pipe(sourcemaps.init())
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
     }))
     .pipe(cleancss({compatibility: 'ie8'}))   /* option for making compatibable with IE8 */
+    .pipe(sourcemaps.write())
     .pipe(dest(distCss))
 }
 
 /*** Convert SASS and minify CSS ***/
 function convertsasstocss() {
   return src(srcScss)
+    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(rename({suffix: ".min"}))
     .pipe(autoprefixer({
@@ -59,6 +63,7 @@ function convertsasstocss() {
       cascade: false
     }))
     .pipe(cleancss({compatibility: 'ie8'}))   /* option for making compatibable with IE8 */
+    .pipe(sourcemaps.write())
     .pipe(dest(distCss))
     .pipe(browsersync.stream());  // emit a signal for reload the browser
 }
@@ -76,8 +81,10 @@ function compresshtml() {
 /*** Minify JavaScript ***/
 function compressjs() {
   return src(srcJs)
-    .pipe(jsmin())
+    .pipe(sourcemaps.init())
+    .pipe(uglify())
     .pipe(concat('bundle.js'))  // bundle all the javascript files
+    .pipe(sourcemaps.write())
     .pipe(dest(distJs))
     .pipe(browsersync.stream());
 }
