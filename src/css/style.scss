@@ -1,4 +1,4 @@
-@import "style.css";
+@import "agent-reset.css";
 
 a {
   color: red;
@@ -8,4 +8,8 @@ a {
   &:active {
     color: green;
   }
+}
+
+h1 {
+  color: blue;
 }

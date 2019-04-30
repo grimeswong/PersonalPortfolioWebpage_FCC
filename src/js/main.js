@@ -1,1 +1,3 @@
-var a = 15;
+/**
+  * This is the main JavaScript file
+  */
