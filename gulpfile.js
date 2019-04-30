@@ -13,6 +13,7 @@ const autoprefixer = require('gulp-autoprefixer'); // plugin for prefixing css
 const sass = require('gulp-sass'); // plugin for converting sass/scss to css
 const browsersync = require('browser-sync').create(); // plugin for live css reload & browser syncing
 const rename = require('gulp-rename');  // plugin for rename the processed files
+const concat = require('gulp-concat'); // plugin for concate files
 
 /**
   * Source and destination folders
@@ -20,8 +21,8 @@ const rename = require('gulp-rename');  // plugin for rename the processed files
 /*** Source ***/
 const srcHtml = 'src/index.html';
 const srcJs = 'src/js/**/*';
-const srcCss = 'src/css/**/*.css';
-const srcScss = "src/css/**/*.scss";
+const srcCss = 'src/css/**/*';
+const srcScss = "src/css/**/*";
 const srcImg = 'src/img/**/*';  // **/* (wildcard) means include all file in current folders and its subfolders
 
 /*** Destination ***/
@@ -76,6 +77,7 @@ function compresshtml() {
 function compressjs() {
   return src(srcJs)
     .pipe(jsmin())
+    .pipe(concat('bundle.js'))  // bundle all the javascript files
     .pipe(dest(distJs))
     .pipe(browsersync.stream());
 }
