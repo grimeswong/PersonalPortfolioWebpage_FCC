@@ -12,6 +12,7 @@ const jsmin = require('gulp-uglify'); // plugin to minify javascript
 const autoprefixer = require('gulp-autoprefixer'); // plugin for prefixing css
 const sass = require('gulp-sass'); // plugin for converting sass/scss to css
 const browsersync = require('browser-sync').create(); // plugin for live css reload & browser syncing
+const rename = require('gulp-rename');  // plugin for rename the processed files
 
 /**
   * Source and destination folders
@@ -51,6 +52,7 @@ function compresscss() {
 function convertsasstocss() {
   return src(srcScss)
     .pipe(sass().on('error', sass.logError))
+    .pipe(rename({suffix: ".min"}))
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
