@@ -1,5 +1,5 @@
 @import "agent-reset.css";
-
+@import "bootstrap";
 /**
   * Colours
   */
@@ -20,6 +20,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 /**
   *  Nav Bar
   */
@@ -32,13 +36,6 @@ a {
 
   ul {
     text-align: center;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    li {
-      display: inline-block;
-      width: 20%;
 
       a {
         position: relative;
@@ -65,9 +62,15 @@ a {
         visibility: visible;
         transform: scaleX(1);
       }
-    }
-
-
   }
 
+}
+
+@media (min-width: 768px) {
+  #navbar {
+    ul {
+      margin: auto;
+      width: 50%;
+    }
+  }
 }
