@@ -1,15 +1,73 @@
 @import "agent-reset.css";
 
-a {
-  color: red;
-  &:hover {
-    color: blue;
-  }
-  &:active {
-    color: green;
-  }
+/**
+  * Colours
+  */
+$nav-menu-color: rgb(255, 255, 255);
+$nav-gradient-left-color: rgb(245, 136, 8);
+$nav-gradient-right-color: rgb(220,43,92);
+$nav-menu-hover-color: rgb(255, 0, 0);
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
-  color: blue;
+a {
+  color: white;
+  text-decoration: none;
+}
+
+/**
+  *  Nav Bar
+  */
+#navbar {
+  width: 100%;
+  font-size: 1.5rem;
+  line-height: 3rem;
+  background-color: $nav-gradient-left-color;
+  background-image: linear-gradient(to right, $nav-gradient-left-color , $nav-gradient-right-color);
+
+  ul {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    li {
+      display: inline-block;
+      width: 20%;
+
+      a {
+        position: relative;
+      }
+      a:hover {
+        font-weight: bold;
+        color: black;
+        opacity: 0.75;
+        transition: all 1s;
+      }
+      a::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+        visibility: hidden;
+        transform: scaleX(0);
+        transition: all 0.5s ease-in-out 0s;
+      }
+      a:hover::before {
+        visibility: visible;
+        transform: scaleX(1);
+      }
+    }
+
+
+  }
+
 }
