@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Permanent+Marker|Open+Sans|Fredoka+One|Lora|Lora:bold|Roboto|Roboto:bold|Lato");
+@import url("https://fonts.googleapis.com/css?family=Chewy|Permanent Marker|Open+Sans|Fredoka+One|Lora|Lora:bold|Roboto|Roboto:bold|Lato");
 @import "agent-reset.css";
 @import "bootstrap";
 
@@ -16,7 +16,7 @@ $welcome-section-text-color: rgb(255, 255, 255);
   *  Fonts
   */
 
-$welcome-title: "Fredoka One", sans-serif;
+$welcome-title: "Chewy", sans-serif;
 $welcome-subtitle: "Permanent Marker", "Open Sans", sans-serif;
 
 ul {
@@ -45,6 +45,7 @@ a:hover {
   position: fixed;
   width: 100%;
   z-index: 99;
+  font-family: "Fredoka One", sans-serif;
   font-size: 1.5rem;
   line-height: 3rem;
   background-color: $nav-gradient-left-color;
