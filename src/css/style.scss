@@ -12,6 +12,9 @@ $nav-menu-hover-color: rgb(255, 0, 0);
 
 $welcome-section-text-color: rgb(255, 255, 255);
 
+
+$project-gradient-left-color: rgb(0, 0, 0);
+$project-gradient-right-color: rgb(220,43,92);
 /**
   *  Fonts
   */
@@ -117,4 +120,43 @@ a:hover {
       font-family: $welcome-subtitle;
       font-size: 1.5em;
     }
+  }
+
+  /**
+    *  Projects
+    **/
+
+  #projects {
+    width: 100%;
+    height: 100%;
+    background-color: $project-gradient-right-color;
+    background-image: linear-gradient(to right, $project-gradient-left-color , $project-gradient-right-color);
+
+    ul {
+      margin: 150px auto;
+      padding: 0 20%;
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-column-gap: 5vw;
+      grid-row-gap: 10vh;
+
+    }
+
+    .project-tile {
+
+      li {
+        margin: auto;
+        min-width: 300px;
+        width: 25vw;
+        height: 30vh;
+
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 8px;
+          object-fit: cover;
+        }
+      }
+    }
+
   }
