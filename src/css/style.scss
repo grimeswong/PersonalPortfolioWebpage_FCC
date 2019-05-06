@@ -53,8 +53,6 @@ a:hover {
   font-family: "Fredoka One", sans-serif;
   font-size: 1.5rem;
   line-height: 3rem;
-  background-color: $nav-gradient-left-color;
-  background-image: linear-gradient(to right, $nav-gradient-left-color , $nav-gradient-right-color);
 
   ul {
     text-align: center;
@@ -86,6 +84,16 @@ a:hover {
       }
   }
 
+}
+
+.navbar-welcome {
+  background-color: $nav-gradient-left-color;
+  background-image: linear-gradient(to right, $nav-gradient-left-color , $nav-gradient-right-color);
+}
+
+.navbar-projects {
+  background-color: $project-gradient-left-color;
+  background-image: linear-gradient(to right, $project-gradient-left-color , $project-gradient-right-color);
 }
 
 @media (min-width: 768px) {
