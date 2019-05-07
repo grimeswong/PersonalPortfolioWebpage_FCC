@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Chewy|Permanent Marker|Open+Sans|Fredoka+One|Lora|Lora:bold|Roboto|Roboto:bold|Lato");
+@import url("https://fonts.googleapis.com/css?family=Chewy|Permanent Marker|Open+Sans|Fredoka+One|Lora|Lora:bold|Roboto|Roboto:bold|Lato");  // Must put google fonts CDN on the first line
 @import "agent-reset.css";
 @import "bootstrap";
 
@@ -14,15 +14,14 @@ $welcome-section-text-color: rgb(255, 255, 255);
 $project-section-text-color: rgb(255, 255, 255);
 $project-image-overlay-color: rgb(0, 0, 0);
 
-
 $project-gradient-left-color: rgb(220,43,92);
 $project-gradient-right-color: rgb(0, 0, 0);
+
 /**
   *  Fonts
   */
-
-$welcome-title: "Chewy", sans-serif;
-$welcome-subtitle: "Permanent Marker", "Open Sans", sans-serif;
+$section-title-fonts: "Chewy", sans-serif;
+$section-subtitle-fonts: "Permanent Marker", "Open Sans", sans-serif;
 
 ul {
   list-style-type: none;
@@ -31,7 +30,7 @@ ul {
 }
 
 a {
-  color: white;
+  color: rgb(255, 255, 255,);
   text-decoration: none;
 }
 
@@ -41,6 +40,16 @@ a:hover {
 
 .section {
   text-align: center;
+}
+
+%section-title {
+  color: rgb(255, 255, 255);
+  font-family: $section-title-fonts;
+}
+
+%section-subtitle {
+  color: rgb(255, 255, 255);
+  font-family: $section-subtitle-fonts;
 }
 
 /**
@@ -122,12 +131,12 @@ a:hover {
 
     h1 {
       color: $welcome-section-text-color;
-      font-family: $welcome-title;
+      font-family: $section-title-fonts;
     }
 
     p {
       color: $welcome-section-text-color;
-      font-family: $welcome-subtitle;
+      font-family: $section-subtitle-fonts;
       font-size: 1.5em;
     }
   }
@@ -139,8 +148,18 @@ a:hover {
   #projects {
     width: 100%;
     height: 100%;
+    padding: 100px 15px;
     background-color: $project-gradient-right-color;
     background-image: linear-gradient(to right, $project-gradient-left-color , $project-gradient-right-color);
+
+    h1 {
+      @extend %section-title;
+    }
+
+    p {
+      @extend %section-subtitle;
+      font-size: 1.5em;
+    }
 
     ul {
       margin: 150px auto;
