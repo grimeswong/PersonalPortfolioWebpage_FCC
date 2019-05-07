@@ -239,11 +239,15 @@ a:hover {
       li {
         margin: 50px;
         display: inline-block;
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        color: white;
-        background-color: black;
+        font-size: 8em;
+
+        a {
+          color: black;
+        }
+        
+        a:hover{
+          opacity: 0.7;
+        }
       }
     }
 
