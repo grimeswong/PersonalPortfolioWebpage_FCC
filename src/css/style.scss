@@ -17,6 +17,9 @@ $project-image-overlay-color: rgb(0, 0, 0);
 $project-gradient-left-color: rgb(220,43,92);
 $project-gradient-right-color: rgb(0, 0, 0);
 
+$profile-gradient-left-color: rgb(255, 91, 10);
+$profile-gradient-right-color: rgb(220,43,92);
+
 /**
   *  Fonts
   */
@@ -40,6 +43,10 @@ a:hover {
 
 .section {
   text-align: center;
+}
+
+.section-padding {
+  padding: 100px 15px;
 }
 
 %section-title {
@@ -148,7 +155,6 @@ a:hover {
   #projects {
     width: 100%;
     height: 100%;
-    padding: 100px 15px;
     background-color: $project-gradient-right-color;
     background-image: linear-gradient(to right, $project-gradient-left-color , $project-gradient-right-color);
 
@@ -199,6 +205,26 @@ a:hover {
       }
     }
 
+  }
+
+  /**
+  *  Profile Links
+  */
+
+  #profile-link {
+    width: 100%;
+    height: 100vh;
+    background-color: $profile-gradient-right-color;
+    background-image: linear-gradient(to right, $profile-gradient-left-color , $profile-gradient-right-color);
+
+    h1 {
+      @extend %section-title;
+    }
+
+    p {
+      @extend %section-title;
+      font-size: 1.5em;
+    }
   }
 
   /**
