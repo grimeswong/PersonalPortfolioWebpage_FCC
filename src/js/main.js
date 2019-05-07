@@ -10,16 +10,22 @@ $(document).ready(function() {
   // }
 
   $(window).scroll(function() {
-    // console.log("Current Top = "+ $(window).scrollTop());
-    // console.log("Welcome Top = " + $("#welcome-section").offset().top);
-    // console.log("Project Top = " + $("#projects").offset().top);
+    console.log("Current Top = "+ $(window).scrollTop());
+    console.log("Welcome Top = " + $("#welcome-section").offset().top);
+    console.log("Project Top = " + $("#projects").offset().top);
+    console.log("Profile Top = " + $("#profile-link").offset().top);
     // console.log("Navbar height = " + $("#navbar").height());
     if ($(window).scrollTop() == $("#welcome-section").offset().top || $(window).scrollTop() <= $("#projects").offset().top - $("#navbar").height()) {
       $("#navbar").addClass("navbar-welcome");
       $("#navbar").removeClass("navbar-projects");
-    } else if ($(window).scrollTop() >= $("#projects").offset().top ) {
+    } else if ($(window).scrollTop() >= $("#projects").offset().top && $(window).scrollTop() <= $("#profile-link").offset().top) {
       $("#navbar").addClass("navbar-projects");
       $("#navbar").removeClass("navbar-welcome");
+      $("#navbar").removeClass("navbar-profiles");
+    } else if ($(window).scrollTop() >= $("#profile-link").offset().top) {
+      $("#navbar").addClass("navbar-profiles");
+      $("#navbar").removeClass("navbar-welcome");
+      $("#navbar").removeClass("navbar-projects");
     }
 
     /* Project tiles events */
