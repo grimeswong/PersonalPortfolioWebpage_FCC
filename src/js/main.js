@@ -21,6 +21,16 @@ $(document).ready(function() {
       $("#navbar").addClass("navbar-projects");
       $("#navbar").removeClass("navbar-welcome");
     }
+
+    /* Project tiles events */
+    $(".project-text").mouseover(function() {
+      $(this).parents(".project-overlay").addClass("project-box-hover");
+    });
+
+    $(".project-text").mouseleave(function() {
+      $(this).parents(".project-overlay").removeClass("project-box-hover");
+    });
+
   });
 
 });

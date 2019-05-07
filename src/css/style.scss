@@ -179,6 +179,8 @@ a:hover {
         min-width: 300px;
         width: 25vw;
         height: 30vh;
+        border-radius: 8px;
+        box-shadow: 5px 4px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
         img {
           width: 100%;
@@ -186,11 +188,14 @@ a:hover {
           object-fit: cover;
           border-radius: 8px;
         }
+
+        a:hover {
+          color: rgba(255, 255, 255, 0.6);
+        }
       }
 
       li:hover .project-overlay {
         opacity: 0.95;
-        border-radius: 8px;
       }
     }
 
@@ -211,6 +216,7 @@ a:hover {
     opacity: 0;
     transition: .5s ease;
     background-color: $project-image-overlay-color;
+    border-radius: 8px;
   }
 
   .project-text {
@@ -220,4 +226,8 @@ a:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
+  }
+
+  .project-box-hover {
+    box-shadow: 10px 15px 5px 0 rgba(0, 0, 0, 0.2);
+  }
