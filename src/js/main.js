@@ -29,6 +29,8 @@ $(document).ready(function() {
       $("#navbar").removeClass("navbar-projects");
     }
 
+  });
+
     /* Project tiles events */
     $(".project-text").mouseover(function() {
       $(this).parents(".project-overlay").addClass("project-box-hover");
@@ -38,6 +40,12 @@ $(document).ready(function() {
       $(this).parents(".project-overlay").removeClass("project-box-hover");
     });
 
-  });
 
+    /* Profile links events */
+    $(".profile-link-icon").hover(function() {
+      $(this).siblings("p").css("visibility", "visible");
+    }, function() {
+      $(this).siblings("p").css("visibility", "hidden");
+    });
+    
 });
