@@ -7,7 +7,7 @@
   */
 $nav-menu-color: rgb(255, 255, 255);
 $nav-gradient-left-color: rgb(245, 136, 8);
-$nav-gradient-right-color: rgb(220,43,92);
+$nav-gradient-right-color: rgb(220, 43, 92);
 $nav-menu-hover-color: rgb(255, 0, 0);
 
 $welcome-section-text-color: rgb(255, 255, 255);
@@ -20,9 +20,14 @@ $project-gradient-right-color: rgb(0, 0, 0);
 $profile-gradient-left-color: rgb(255, 91, 10);
 $profile-gradient-right-color: rgb(99, 15, 38);
 
-$profile-icon-color: rgb(0,0,0);
-$profile-icon-hover-color: rgb(255,255,255);
-$profile-icon-text-color: rgb(0,0,0);
+$profile-icon-color: rgb(0, 0, 0);
+$profile-icon-hover-color: rgb(255, 255, 255);
+$profile-icon-text-color: rgb(0, 0, 0);
+
+$footer-background-color: rgb(0, 0, 0);
+$footer-text-color: rgb(255, 255, 255);
+$footer-gradient-left-color: rgb(0, 0, 0);
+$footer-gradient-right-color: rgb(220, 43, 92);
 
 /**
   *  Fonts
@@ -220,7 +225,7 @@ a:hover {
   *  Profile Links
   */
 
-  #profile-link {
+  #profile-links {
     width: 100%;
     height: 100%;
     min-height: 100vh;
@@ -271,7 +276,22 @@ a:hover {
 
   }
 
-  /**
+/**
+  *  Footer
+  */
+  footer {
+    padding: 30px 30px;
+    width: 100%;
+    min-height: 100px;
+    color: $footer-text-color;
+    background-color: $footer-background-color;
+    background-image: linear-gradient(to right, $footer-gradient-left-color, $footer-gradient-left-color , $footer-gradient-right-color);
+    font-size: 1rem;
+    text-align: center;
+  }
+
+
+/**
   *  Overlay and animation
   */
 
