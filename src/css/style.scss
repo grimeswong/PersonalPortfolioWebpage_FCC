@@ -230,7 +230,13 @@ a:hover {
   }
 
   @media (min-width: 768px) and (max-width: 991px) {
-
+    #projects {
+      ul {
+        padding: 150px 5%;
+        grid-column-gap: 2vw;
+        grid-row-gap: 5vh;
+      }
+    }
   }
 
   /**
