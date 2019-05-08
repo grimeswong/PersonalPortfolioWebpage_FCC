@@ -194,8 +194,7 @@ a:hover {
       padding: 150px 15%;
       display: grid;
       grid-template-columns: auto auto;
-      grid-column-gap: 5vw;
-      grid-row-gap: 10vh;
+
 
     }
 
@@ -229,12 +228,18 @@ a:hover {
 
   }
 
+  @media (min-width: 992px) {
+    #projects {
+      grid-column-gap: 5vw;
+      grid-row-gap: 10vh;
+    }
+  }
+
   @media (min-width: 768px) and (max-width: 991px) {
     #projects {
       ul {
         padding: 150px 5%;
-        grid-column-gap: 2vw;
-        grid-row-gap: 5vh;
+        grid-row-gap: 10vh;
       }
     }
   }
