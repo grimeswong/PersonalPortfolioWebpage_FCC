@@ -24,6 +24,9 @@ $profile-icon-color: rgb(0,0,0);
 $profile-icon-hover-color: rgb(255,255,255);
 $profile-icon-text-color: rgb(0,0,0);
 
+$footer-background-color: rgb(0,0,0);
+$footer-text-color: rgb(255,255,255);
+
 /**
   *  Fonts
   */
@@ -271,7 +274,21 @@ a:hover {
 
   }
 
-  /**
+/**
+  *  Footer
+  */
+  footer {
+    padding: 30px 30px;
+    width: 100%;
+    min-height: 100px;
+    color: $footer-text-color;
+    background-color: $footer-background-color;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+
+/**
   *  Overlay and animation
   */
 
