@@ -1,15 +1,317 @@
-@import "agent-reset.css";
+@import url("https://fonts.googleapis.com/css?family=Chewy|Permanent Marker|Open+Sans|Fredoka+One|Lora|Lora:bold|Roboto|Roboto:bold|Lato");  // Must put google fonts CDN on the first line
+
+@import "bootstrap";
+
+/**
+  * Colours
+  */
+$nav-menu-color: rgb(255, 255, 255);
+$nav-gradient-left-color: rgb(245, 136, 8);
+$nav-gradient-right-color: rgb(220,43,92);
+$nav-menu-hover-color: rgb(255, 0, 0);
+
+$welcome-section-text-color: rgb(255, 255, 255);
+$project-section-text-color: rgb(255, 255, 255);
+$project-image-overlay-color: rgb(0, 0, 0);
+
+$project-gradient-left-color: rgb(220,43,92);
+$project-gradient-right-color: rgb(0, 0, 0);
+
+$profile-gradient-left-color: rgb(255, 91, 10);
+$profile-gradient-right-color: rgb(99, 15, 38);
+
+$profile-icon-color: rgb(0,0,0);
+$profile-icon-hover-color: rgb(255,255,255);
+$profile-icon-text-color: rgb(0,0,0);
+
+/**
+  *  Fonts
+  */
+$section-title-fonts: "Chewy", sans-serif;
+$section-subtitle-fonts: "Permanent Marker", "Open Sans", sans-serif;
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
 a {
-  color: red;
-  &:hover {
-    color: blue;
+  color: rgb(255, 255, 255,);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.section {
+  text-align: center;
+}
+
+.section-padding {
+  padding: 100px 15px;
+}
+
+%section-title {
+  color: rgb(255, 255, 255);
+  font-family: $section-title-fonts;
+}
+
+%section-subtitle {
+  color: rgb(255, 255, 255);
+  font-family: $section-subtitle-fonts;
+}
+
+/**
+  *  Nav Bar
+  */
+#navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  font-family: "Fredoka One", sans-serif;
+  font-size: 1.5rem;
+  line-height: 3rem;
+
+  ul {
+    text-align: center;
+
+      a {
+        position: relative;
+      }
+      a:hover {
+        font-weight: bold;
+        color: black;
+        opacity: 0.75;
+        transition: all 1s;
+      }
+      a::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+        visibility: hidden;
+        transform: scaleX(0);
+        transition: all 0.5s ease-in-out 0s;
+      }
+      a:hover::before {
+        visibility: visible;
+        transform: scaleX(1);
+      }
   }
-  &:active {
-    color: green;
+
+}
+
+.navbar-welcome {
+  background-color: $nav-gradient-left-color;
+  background-image: linear-gradient(to right, $nav-gradient-left-color , $nav-gradient-right-color);
+}
+
+.navbar-projects {
+  background-color: $project-gradient-left-color;
+  background-image: linear-gradient(to right, $project-gradient-left-color , $project-gradient-right-color);
+}
+
+.navbar-profiles {
+  background-color: $profile-gradient-left-color;
+  background-image: linear-gradient(to right, $profile-gradient-left-color , $profile-gradient-right-color);
+}
+
+@media (min-width: 768px) {
+  #navbar {
+    ul {
+      margin: auto;
+      width: 50%;
+    }
   }
 }
 
-h1 {
-  color: blue;
-}
+/**
+  *  Welcome Section
+  **/
+
+  #welcome-section {
+    height: 100vh;
+    background-color: $nav-gradient-left-color;
+    background-image: linear-gradient(to right, $nav-gradient-left-color , $nav-gradient-right-color);
+
+    .welcome-text {
+      padding-top: 45vh;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    h1 {
+      color: $welcome-section-text-color;
+      font-family: $section-title-fonts;
+    }
+
+    p {
+      color: $welcome-section-text-color;
+      font-family: $section-subtitle-fonts;
+      font-size: 1.5em;
+    }
+  }
+
+  /**
+    *  Projects
+    **/
+
+  #projects {
+    width: 100%;
+    height: 100%;
+    background-color: $project-gradient-right-color;
+    background-image: linear-gradient(to right, $project-gradient-left-color , $project-gradient-right-color);
+
+    h1 {
+      @extend %section-title;
+    }
+
+    p {
+      @extend %section-subtitle;
+      font-size: 1.5em;
+    }
+
+    ul {
+      margin: 150px auto;
+      padding: 0 20%;
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-column-gap: 5vw;
+      grid-row-gap: 10vh;
+
+    }
+
+    .project-tile {
+
+      li {
+        position: relative;
+        margin: auto;
+        min-width: 300px;
+        width: 25vw;
+        height: 30vh;
+        border-radius: 8px;
+        box-shadow: 5px 4px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 8px;
+        }
+
+        a:hover {
+          color: rgba(255, 255, 255, 0.6);
+        }
+      }
+
+      li:hover .project-overlay {
+        opacity: 0.95;
+      }
+    }
+
+  }
+
+  /**
+  *  Profile Links
+  */
+
+  #profile-link {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    position: relative;
+    background-color: $profile-gradient-right-color;
+    background-image: linear-gradient(to right, $profile-gradient-left-color , $profile-gradient-right-color);
+    margin: auto;
+
+    h1 {
+      @extend %section-title;
+    }
+
+    p {
+      @extend %section-title;
+      font-size: 1.5em;
+    }
+
+    ul {
+      padding: 200px 10%;
+      text-align: center;
+
+      li {
+        width: 220px;
+        padding: 20px;
+        display: inline-block;
+        font-size: 1.5rem;
+
+        i {
+          font-size: 8rem;
+        }
+
+        a {
+          color: $profile-icon-color;
+        }
+
+        a:hover{
+          color: $profile-icon-hover-color;
+          opacity: 0.7;
+        }
+
+        .profile-link-name {
+          visibility: hidden;
+          color: $profile-icon-text-color;
+          transition: all 0.1s;
+        }
+      }
+    }
+
+  }
+
+  /**
+  *  Overlay and animation
+  */
+
+  .project-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: $project-image-overlay-color;
+    border-radius: 8px;
+  }
+
+  .project-text {
+    color: $project-section-text-color;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .project-box-hover {
+    box-shadow: 10px 15px 5px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .profile-show-link {
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    padding: 10px 30px;
+    color: rgb(255, 255, 255);
+    transform: translate(-50%, -50%);  // centralize the text
+    font-size: 3em;
+  }
+
+  .profile-show-text {
+    background-color: red;
+  }
