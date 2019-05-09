@@ -131,6 +131,10 @@ a:hover {
 
 @media (min-width: 992px) {
   #navbar {
+    .open-btn {
+      display: none;
+    }
+
     ul {
       margin: auto;
       width: 50%;
@@ -140,6 +144,10 @@ a:hover {
 
 @media (min-width: 768px) and (max-width: 991px) {
   #navbar {
+    .open-btn {
+      display: none;
+    }
+    
     ul {
       margin: auto;
       width: 70%;

@@ -31,30 +31,41 @@ $(document).ready(function() {
 
   });
 
-    /* Navbar mobile view event */
-    $(".open-btn").on("click", function() {
+  $(window).resize(function() {
+    // console.log($(window).outerWidth());
+    if($(window).outerWidth() >= 768) {
+      $(".navbar-links").css("display", "flex");
+    } else {
+      $(".navbar-links").css("display", "none");
+    }
+  });
+
+  /* Navbar mobile view event */
+  $(".open-btn").on("click", function() {
+    $(".navbar-links").toggle();
+  });
+
+  $(".navbar-link").on("click", function() {
+    if($(window).outerWidth() < 768){
       $(".navbar-links").toggle();
-    });
+    }
+  })
 
-    $(".navbar-link").on("click", function() {
-      $(".navbar-links").toggle();
-    })
+  /* Project tiles events */
+  $(".project-text").mouseover(function() {
+    $(this).parents(".project-overlay").addClass("project-box-hover");
+  });
 
-    /* Project tiles events */
-    $(".project-text").mouseover(function() {
-      $(this).parents(".project-overlay").addClass("project-box-hover");
-    });
-
-    $(".project-text").mouseleave(function() {
-      $(this).parents(".project-overlay").removeClass("project-box-hover");
-    });
+  $(".project-text").mouseleave(function() {
+    $(this).parents(".project-overlay").removeClass("project-box-hover");
+  });
 
 
-    /* Profile links events */
-    $(".profile-link-icon").hover(function() {
-      $(this).siblings("p").css("visibility", "visible");
-    }, function() {
-      $(this).siblings("p").css("visibility", "hidden");
-    });
+  /* Profile links events */
+  $(".profile-link-icon").hover(function() {
+    $(this).siblings("p").css("visibility", "visible");
+  }, function() {
+    $(this).siblings("p").css("visibility", "hidden");
+  });
 
 });
