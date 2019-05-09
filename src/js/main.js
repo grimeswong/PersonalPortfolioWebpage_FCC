@@ -32,10 +32,13 @@ $(document).ready(function() {
   });
 
     /* Navbar mobile view event */
-    $(".open-btn").on("click", function(){
-      console.log("open button is clicked");
+    $(".open-btn").on("click", function() {
       $(".navbar-links").toggle();
     });
+
+    $(".navbar-link").on("click", function() {
+      $(".navbar-links").toggle();
+    })
 
     /* Project tiles events */
     $(".project-text").mouseover(function() {
