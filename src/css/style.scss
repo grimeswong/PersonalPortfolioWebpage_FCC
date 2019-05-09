@@ -179,6 +179,11 @@ a:hover {
       background-color: $nav-open-btn-background-color;
       cursor: pointer;
       border: 0;
+
+    }
+
+    .open-btn:focus {
+      outline: none;
     }
 
     .navbar-links {
