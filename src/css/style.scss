@@ -144,6 +144,24 @@ a:hover {
   }
 }
 
+@media (max-width: 767px) {
+  #navbar {
+    .open-btn {
+      display:block;
+      position: fixed;
+      top: 5vh;
+      right: 5vw;
+      z-index: 2;
+      width: 80px;
+      height: 80px;
+      padding: 10px;
+      background-color: rgba(0,0,0,0);
+      cursor: pointer;
+      border: 0;
+    }
+  }
+}
+
 /**
   *  Welcome Section
   **/
@@ -325,6 +343,39 @@ a:hover {
     text-align: center;
   }
 
+  /**
+    *  Button & Icon
+    */
+
+  .mobile-menu-icon {
+    z-index: 2;
+    display: block;
+    width: 70%;
+    height: 1vh;
+    background-color: $nav-menu-color;
+    border-radius: 10px;
+  }
+
+  #menu-icon-top {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #menu-icon-middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #menu-icon-bottom {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
 /**
   *  Overlay and animation
