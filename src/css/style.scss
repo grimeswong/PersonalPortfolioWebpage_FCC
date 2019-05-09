@@ -147,7 +147,7 @@ a:hover {
     .open-btn {
       display: none;
     }
-    
+
     ul {
       margin: auto;
       width: 70%;
@@ -285,14 +285,16 @@ a:hover {
 
   @media (min-width: 992px) {
     #projects {
-      grid-column-gap: 5vw;
-      grid-row-gap: 10vh;
+      .project-tile{
+        grid-column-gap: 5vw;
+        grid-row-gap: 10vh;
+      }
     }
   }
 
   @media (min-width: 768px) and (max-width: 991px) {
     #projects {
-      ul {
+      .project-tile {
         padding: 150px 5%;
         grid-row-gap: 10vh;
       }
