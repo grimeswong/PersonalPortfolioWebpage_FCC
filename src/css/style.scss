@@ -9,6 +9,7 @@ $nav-menu-color: rgb(255, 255, 255);
 $nav-gradient-left-color: rgb(245, 136, 8);
 $nav-gradient-right-color: rgb(220, 43, 92);
 $nav-menu-hover-color: rgb(255, 0, 0);
+$nav-open-btn-background-color: rgba(0, 0, 0, 0);
 
 $welcome-section-text-color: rgb(255, 255, 255);
 $project-section-text-color: rgb(255, 255, 255);
@@ -145,7 +146,17 @@ a:hover {
 }
 
 @media (max-width: 767px) {
+  .container-fluid {
+    position: relative;
+  }
+
   #navbar {
+    font-size: 3em;
+
+    .row {
+      align-items: center;
+    }
+
     .open-btn {
       display:block;
       position: fixed;
@@ -155,9 +166,21 @@ a:hover {
       width: 80px;
       height: 80px;
       padding: 10px;
-      background-color: rgba(0,0,0,0);
+      background-color: $nav-open-btn-background-color;
       cursor: pointer;
       border: 0;
+    }
+
+    .navbar-links {
+      display: none;
+      padding-top: 20%;
+      height: 100vh;
+      background-color: rgba(0,0,0, 0.9);
+      transition: height 0.5s
+    }
+
+    .navbar-link {
+      padding: 50px 15px;
     }
   }
 }

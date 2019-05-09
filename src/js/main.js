@@ -31,6 +31,12 @@ $(document).ready(function() {
 
   });
 
+    /* Navbar mobile view event */
+    $(".open-btn").on("click", function(){
+      console.log("open button is clicked");
+      $(".navbar-links").toggle();
+    });
+
     /* Project tiles events */
     $(".project-text").mouseover(function() {
       $(this).parents(".project-overlay").addClass("project-box-hover");
