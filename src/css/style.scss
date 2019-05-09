@@ -291,6 +291,23 @@ a:hover {
     }
   }
 
+  @media (max-width: 767px) {
+    #projects {
+
+      .project-tile {
+        grid-template-columns: auto;
+        grid-row-gap: 10vh;
+        padding: 150px 5%;
+
+        li {
+          width: 100%;
+          min-width: 0;
+          height: 100%
+        }
+      }
+    }
+  }
+
   /**
   *  Profile Links
   */
