@@ -385,6 +385,20 @@ a:hover {
     }
   }
 
+  @media (max-width: 767px) {
+    #profile-links {
+      ul {
+        padding: 100px 5%;
+        li {
+          width: 50%;
+          i {
+            font-size: 4rem;
+          }
+        }
+      }
+    }
+  }
+
 /**
   *  Footer
   */
