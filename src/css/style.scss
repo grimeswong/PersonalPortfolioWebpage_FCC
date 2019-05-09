@@ -9,6 +9,9 @@ $nav-menu-color: rgb(255, 255, 255);
 $nav-gradient-left-color: rgb(245, 136, 8);
 $nav-gradient-right-color: rgb(220, 43, 92);
 $nav-menu-hover-color: rgb(255, 0, 0);
+$nav-menu-anchor-hover-color: rgb(0, 0, 0);
+$nav-menu-anchor-hover-mobile-color: rgb(240, 17, 17);
+$nav-open-btn-background-color: rgba(0, 0, 0, 0);
 
 $welcome-section-text-color: rgb(255, 255, 255);
 $project-section-text-color: rgb(255, 255, 255);
@@ -87,7 +90,7 @@ a:hover {
       }
       a:hover {
         font-weight: bold;
-        color: black;
+        color: $nav-menu-anchor-hover-color;
         opacity: 0.75;
         transition: all 1s;
       }
@@ -126,11 +129,77 @@ a:hover {
   background-image: linear-gradient(to right, $profile-gradient-left-color , $profile-gradient-right-color);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   #navbar {
+    .open-btn {
+      display: none;
+    }
+
     ul {
       margin: auto;
       width: 50%;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  #navbar {
+    .open-btn {
+      display: none;
+    }
+
+    ul {
+      margin: auto;
+      width: 70%;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .container-fluid {
+    position: relative;
+  }
+
+  #navbar {
+    font-size: 3em;
+
+    .row {
+      align-items: center;
+    }
+
+    .open-btn {
+      display:block;
+      position: fixed;
+      top: 5vh;
+      right: 5vw;
+      z-index: 2;
+      width: 80px;
+      height: 80px;
+      padding: 10px;
+      background-color: $nav-open-btn-background-color;
+      cursor: pointer;
+      border: 0;
+
+    }
+
+    .open-btn:focus {
+      outline: none;
+    }
+
+    .navbar-links {
+      display: none;
+      padding-top: 20%;
+      height: 100vh;
+      background-color: rgba(0,0,0, 0.9);
+      transition: height 0.5s
+    }
+
+    .navbar-link {
+      padding: 50px 15px;
+
+      a:hover {
+        color: $nav-menu-anchor-hover-mobile-color;
+      }
     }
   }
 }
@@ -182,12 +251,10 @@ a:hover {
     }
 
     ul {
-      margin: 150px auto;
-      padding: 0 20%;
+      padding: 150px 15%;
       display: grid;
       grid-template-columns: auto auto;
-      grid-column-gap: 5vw;
-      grid-row-gap: 10vh;
+
 
     }
 
@@ -219,6 +286,41 @@ a:hover {
       }
     }
 
+  }
+
+  @media (min-width: 992px) {
+    #projects {
+      .project-tile{
+        grid-column-gap: 5vw;
+        grid-row-gap: 10vh;
+      }
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    #projects {
+      .project-tile {
+        padding: 150px 5%;
+        grid-row-gap: 10vh;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    #projects {
+
+      .project-tile {
+        grid-template-columns: auto;
+        grid-row-gap: 10vh;
+        padding: 150px 5%;
+
+        li {
+          width: 100%;
+          min-width: 0;
+          height: 100%
+        }
+      }
+    }
   }
 
   /**
@@ -276,6 +378,32 @@ a:hover {
 
   }
 
+  @media (min-width: 768px) and (max-width: 991px) {
+    #profile-links {
+      ul {
+        li {
+          i {
+            font-size: 6rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    #profile-links {
+      ul {
+        padding: 100px 5%;
+        li {
+          width: 40%;
+          i {
+            font-size: 4rem;
+          }
+        }
+      }
+    }
+  }
+
 /**
   *  Footer
   */
@@ -290,6 +418,39 @@ a:hover {
     text-align: center;
   }
 
+  /**
+    *  Button & Icon
+    */
+
+  .mobile-menu-icon {
+    z-index: 2;
+    display: block;
+    width: 70%;
+    height: 1vh;
+    background-color: $nav-menu-color;
+    border-radius: 10px;
+  }
+
+  #menu-icon-top {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #menu-icon-middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #menu-icon-bottom {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
 /**
   *  Overlay and animation
