@@ -381,9 +381,12 @@ a:hover {
   @media (min-width: 768px) and (max-width: 991px) {
     #profile-links {
       ul {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        justify-content: space-evenly;
         li {
           i {
-            font-size: 6rem;
+            font-size: 4rem;
           }
         }
       }
