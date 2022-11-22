@@ -19,7 +19,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/grimeswong/gulp_task_gunner#readme",
   "devDependencies": {
-    "browser-sync": "^2.26.5",
+    "browser-sync": "^2.27.10",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-clean-css": "^4.0.0",
